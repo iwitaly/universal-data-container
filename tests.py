@@ -5,13 +5,21 @@ import pandas as pd
 
 print(
     Series(
-        [pd.Series([1, 2, 3])]
-    )
+        [1, 2, 3]
+    ).get_type()
 )
 
 
-print(DataFrame([
-    Series([1, 2, 3]),
-    Series([4, 5, 6]),
-    Series(['a', 'b', 'c'])
-]))
+d = DataFrame({
+    'a': Series([1, 2, 3]),
+    'b': Series([4, 5, 6]),
+    'c': Series(['a', 'b', 'c'])
+})
+
+print(
+    d.filter_by_type(np.int64)
+)
+
+print(
+    isinstance(int, np.int64)
+)
