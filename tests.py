@@ -1,25 +1,24 @@
-from main import Series, DataFrame
+from main import CustomSeries, CustomDataFrame
 import numpy as np
 import pandas as pd
+from skimage.io import imread
 
 
-print(
-    Series(
-        [1, 2, 3]
-    ).get_type()
-)
+s1 = CustomSeries([pd.Series([1, 2, 3], index=['a', 'b', 'c']),
+                   pd.Series([4, 5, 6], index=['d', 'e', 'g'])])
+s2 = CustomSeries([1, 2, 3])
+s3 = CustomSeries([{"k1": "v1"}, {"k2": 'v2'}])
+s4 = CustomSeries([imread('/Users/iwitaly/Downloads/1.jpg')])
 
 
-d = DataFrame({
-    'a': Series([1, 2, 3]),
-    'b': Series([4, 5, 6]),
-    'c': Series(['a', 'b', 'c'])
+df = CustomDataFrame({
+    'first': s1,
+    'second': s2,
+    'third': s3,
+    'fourth': s4
 })
 
-print(
-    d.filter_by_type(np.int64)
-)
-
-print(
-    isinstance(int, np.int64)
-)
+# df = CustomDataFrame([
+#        s1, s2, s3, s4
+# ])
+# s = df['third']
